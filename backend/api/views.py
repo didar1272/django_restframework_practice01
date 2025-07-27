@@ -7,7 +7,7 @@ from products.serializers import ProductSerializer
 import json
 
 
-@api_view(["POST"])
+@api_view(["GET","POST"])
 def api_home(request, *args, **kwargs):
     "DRF API"
     # instance = Product.objects.all().order_by("?").first()
