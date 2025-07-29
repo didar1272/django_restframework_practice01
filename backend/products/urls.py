@@ -8,8 +8,8 @@ from .views import (
 )
 
 urlpatterns = [
-    path('<int:pk>/', product_list_create_view),
-    path('', product_list_create_view),
+    path('<int:pk>/', product_detail_view, name='product-detail'),
+    path('', product_list_create_view, name='product-list-create'),
     path('<int:pk>/update/', product_update_view),
     path('<int:pk>/delete/', product_destroy_view),   
 ]
