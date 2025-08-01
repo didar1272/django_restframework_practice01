@@ -1,13 +1,16 @@
 from rest_framework import serializers
 from rest_framework.reverse import reverse
 from .models import Product
+from api.serializers import UserPublicSerializer
 
 class ProductSerializer(serializers.ModelSerializer):
+    owner = UserPublicSerializer(source='user', read_only=True)
     my_discount = serializers.SerializerMethodField(read_only=True)
     url = serializers.SerializerMethodField(read_only=True)
+    email = serializers.EmailField(source='user.email', read_only=True)
     class Meta:
         model = Product
-        fields = ['url', 'pk',
+        fields = ['owner', 'url', 'pk', 'email',
             'title','content','price', 
             'sale_price', 'my_discount']
     
